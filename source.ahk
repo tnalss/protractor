@@ -12,8 +12,8 @@ OnExit, ExitSub
 
 coordmode,pixel,screen
 coordmode,mouse,Screen
-
-
+bigFile:="big.png"
+smallFile:="small.png"
 
 Gui, -Caption +E0x80000 +AlwaysOnTop +Hwndhwnd
 Gui, Show, NA
@@ -25,7 +25,12 @@ return
 
 ;큰 각도기 생성
 +F6::
-sFile := "big.png"
+if (bigFile = "big.png") {
+                bigFile := "big_red.png"
+            } else {
+                bigFile := "big.png"
+            }
+sFile := bigFile
 pBitmap:=Gdip_CreateBitmapFromFile(sFile)
 MouseGetPos,mx,my
 angle=0
@@ -45,7 +50,12 @@ return
 
 ;작은 각도기 생성
 +F7::
-sFile := "small.png"
+if (smallFile = "small.png") {
+                smallFile := "small_red.png"
+            } else {
+                smallFile := "small.png"
+            }
+sFile := smallFile
 pBitmap:=Gdip_CreateBitmapFromFile(sFile)
 MouseGetPos,mx,my
 angle=0
